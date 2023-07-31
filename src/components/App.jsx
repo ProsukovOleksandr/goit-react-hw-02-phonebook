@@ -12,7 +12,6 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: '',
   };
 
   handleAddContact = contact => {
@@ -38,21 +37,24 @@ export class App extends Component {
   };
 
   handleFilter = e => {
-    this.setState({ filter: e.target.value });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact =>
+        contact.name.toLowerCase().includes(e.target.value.toLowerCase().trim())
+      )
+    }));
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts } = this.state;
 
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
-        <Filter onFilter={this.handleFilter} filter={this.state.filter} />
+        <Filter onFilter={this.handleFilter} />
         <ContactList
           contacts={contacts}
-          filter={filter}
           onDeleteContact={this.handleDeleteContact}
         />
       </div>
