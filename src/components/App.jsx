@@ -12,7 +12,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter:"",
+    filter: '',
   };
 
   handleAddContact = contact => {
@@ -37,24 +37,23 @@ export class App extends Component {
     });
   };
 
-  filterContacts = () => {
-  
-  };
+  filterContacts = () => {};
   handleFilter = e => {
     this.setState(() => ({
       filter: e.target.value,
-    }))
-    };
+    }));
+  };
 
-    filterContacts = () => {
-      if(this.state.filter===""){
-        return this.state.contacts;
-      } 
-      else {
-       return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()) )
-      };
+  filterContacts = () => {
+    if (this.state.filter === '') {
+      return this.state.contacts;
+    } else {
+      return this.state.contacts.filter(contact =>
+        contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+      );
     }
-  render(){
+  };
+  render() {
     return (
       <div>
         <h1>Phonebook</h1>
@@ -67,4 +66,5 @@ export class App extends Component {
         />
       </div>
     );
-  }};
+  }
+}
