@@ -37,7 +37,6 @@ export class App extends Component {
     });
   };
 
-  filterContacts = () => {};
   handleFilter = e => {
     this.setState(() => ({
       filter: e.target.value,
